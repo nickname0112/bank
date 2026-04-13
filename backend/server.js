@@ -36,7 +36,7 @@ loadEnvFile(resolve(process.cwd(), '.env'));
 
 const PORT = Number(process.env.PORT || 3001);
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.0-flash';
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 
 function sendJson(response, statusCode, payload) {
   response.writeHead(statusCode, {
