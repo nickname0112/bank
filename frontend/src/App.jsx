@@ -23,6 +23,8 @@ const categories = {
 };
 
 const getToday = () => new Date().toISOString().split('T')[0];
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? 'https://bank-tjkt.onrender.com' : '');
+const getApiUrl = (path) => `${API_BASE_URL}${path}`;
 
 const formatCurrency = (amount) => `${new Intl.NumberFormat('ko-KR').format(amount)}원`;
 
@@ -300,7 +302,7 @@ export default function App() {
     setAdvisorError('');
 
     try {
-      const response = await fetch('/api/investment-advice', {
+      const response = await fetch(getApiUrl('/api/investment-advice'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
